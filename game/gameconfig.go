@@ -6,7 +6,7 @@ type GameConfig struct {
 	GameType         string;
 	TeamSize         int;
 	TotalTeams       int;
-	TimeBucketStart  map[int]int;
+	TimeBucketStart  map[int]int; // p0 as 0 , p1 as 1
 	TimeBucketExpire map[int]int;
 	ScoreConfig      map[int]int;
 	TimeBuckets      int;

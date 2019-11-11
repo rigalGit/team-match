@@ -6,8 +6,8 @@ import (
 )
 
 type Store struct {
-	timeValues[] PriorityQueue;
-	scoreValues[] *treemap.Map;
+	timeValues[] PriorityQueue; // list of time bucket queues storing requests based on time
+	scoreValues[] *treemap.Map; // list of time bucket balanced bst maps stroing entries based on score
 	priorityCount int;
 	config GameConfig;
 	total int;
@@ -26,7 +26,7 @@ func newStore(priorities int,cfg GameConfig) (*Store){
 	}
 	return s;
 }
-
+// add new requests to store
 func (st *Store) addRequest(req PlayerReq)  {
 	id := req.Id;
 	score := req.score;
@@ -53,7 +53,7 @@ func (st *Store) addRequest(req PlayerReq)  {
 	st.total++;
 
 }
-
+// take out most suitable candidate for match from store across all buckets
 func (st *Store) take() (PlayerReq,bool) {
 	var req PlayerReq;
 	if(st.total == 0){
@@ -70,7 +70,7 @@ func (st *Store) take() (PlayerReq,bool) {
 	}
 	return req,false;
 }
-
+// find most suitable candidate against given score
 func (st *Store) findClosest(score int) (PlayerReq,bool) {
 	var req PlayerReq;
 	if(st.total == 0){
