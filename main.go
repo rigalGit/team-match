@@ -35,6 +35,7 @@ func main() {
 }
 
 func createGameConfig() game.GameConfig {
+	// lower the priority index higher its worth
 	timebucketStart := make(map[int]int)
 	timebucketStart[0] = 15
 	timebucketStart[1] = 10
